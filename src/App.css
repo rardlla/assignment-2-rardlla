@@ -1,1 +1,268 @@
 /* Paste your Assignment 1 styles.css here. Keep the icons in src/assets/ so url(assets/...) paths keep working. */
+/* making task manager, layout method flexbox */
+
+/* makes padding count toward an element's width */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* roboot from g-fonts and make 14px for the whole site, 
+header on top and nav and main below */
+body {
+    margin: 9px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* remove deafult list stles */
+ul {
+    list-style: none;
+}
+
+/* header styles */
+/* full-width using red bar, flex lays out menu and search w 
+counter in a row */
+header {
+    width: 100%;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 2rem;
+    background-color: #dc4c3e;
+    color: #ffffff;
+}
+
+.menu-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* lighter red search box*/
+.quick-find {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 350px;
+    padding: 0.5rem;
+    background-color: #e77a70;
+    border-radius: 4px;
+}
+
+.search-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* make sure no border or background so it blends into the box */
+.quick-find input {
+    width: 100%;
+    border: none;
+    background: none;
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+}
+
+/* white placeholder text */
+.quick-find input::placeholder {
+    color: #ffffff;
+}
+
+/* pushes the counter to the right side of the header */
+.task-counter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.check-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* nav styles */
+/* 300px sidebar, full height */
+nav {
+    width: 300px;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-color: #fefbf2;
+}
+
+/* icon and text in a row, count on the right */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    color: #000000;
+    text-decoration: none;
+}
+
+.nav-link img {
+    width: 16px;
+    height: 16px;
+}
+
+.task-count {
+    margin-left: 0.5rem;
+    font-size: 12px;
+    color: #7e7d79;
+}
+
+/* main content */
+/* make sure takes the space left next to the sidebar */
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
+main h1 {
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+/* line between taskss */
+.task-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #dddddd;
+}
+
+.task-list label {
+    margin-left: 0.5rem;
+}
+
+/* filter buttons */
+.task-filters {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* filter separators */
+.task-filters span {
+    font-size: 22px;
+    line-height: 1.5;
+    color: #888888;
+}
+
+.task-filters button {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333333;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.task-filters button:hover {
+    background-color: #f5f5f5;
+}
+
+/* delete button */
+.task-list button {
+    margin-left: 1rem;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    background-color: #dc4c3e;
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.task-list button:hover {
+    background-color: #fff0ee;
+}
+
+/* add task form */
+#inbox > form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+#inbox > form input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.6rem;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+}
+
+#inbox > form button {
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #0653eb;
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#inbox > form button:hover {
+    background-color: #05b926;
+}
+
+/* completed tasks */
+.task-list input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: #888888;
+}
+
+/* selected filter button */
+.task-filters button.selected {
+    background-color: #dc4c3e;
+    color: #ffffff;
+    border-color: #dc4c3e;
+}
+
+.task-filters button.selected:hover {
+    background-color: #c94336;
+}
+
+/* responsive design */
+/* small screen hide the ssidebar nav */
+/* mobile task layout */
+@media (max-width: 480px) {
+    nav {
+        display: none;
+    }
+
+    .task-list li {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .task-list label {
+        flex: 1;
+        min-width: 0;
+        overflow-wrap: break-word;
+        margin-left: 0;
+    }
+
+    .task-list button {
+        margin-left: 0;
+    }
+}
